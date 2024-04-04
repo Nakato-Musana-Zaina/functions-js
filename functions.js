@@ -21,15 +21,15 @@ function positives(array, index) {
     }
 }
 let element = [1,3,4,5,-3,-4,-5];
-console.log(positives(element,3))
+console.log(positives(element,6))
 
 
 // Given an array of objects, where each object represents an employee with an id, name, and salary property, write a function that returns a new array of employee objects sorted by their salary in ascending order.
 function payment(workers) {
-    return workers.sort((x, y) => x.salaries - y.salaries);
+    return workers.sort((x, y) => x.salary - y.salary);
    }
    const workers =[
-    {id:1,name:"Alice", salaries:8000},
+    {id:1,name:"Alice", salary:8000},
     {id:2, name:"Bob", salary:60000},
     {id: 3, name:"Charlie", salary:40000}
    ];
