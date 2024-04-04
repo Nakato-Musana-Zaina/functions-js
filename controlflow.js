@@ -60,9 +60,9 @@ birds(["Hen","Peacock","Ostrich","Parrot"]);
 
 //Write a JavaScript function that takes a string as input and reverses it using a while loop. The function should return the reversed string. function reverseString(str) {
     function reverse(flower){
-        let i =0
-        while (i >= 0) {
-            reversedflower += flower[i]; 
+        let reversedflower = "";
+        while (i >=0 ) {
+            reversedflower += flower.length[i]; 
             i--;
         }
         return reversedflower; 
