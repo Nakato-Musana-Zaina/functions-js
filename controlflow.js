@@ -17,14 +17,15 @@ numbers([1,2,3, 4, 5, 6, 7, 8,9]);
 function loop(arrNum){
     let i = 0; 
     while (i < arrNum.length) { 
-        if (arrNum[i] === arrNum[3]) {
+        if (arrNum[i] === arrNum[4]) {
             break;
         }
         console.log(arrNum[i]);
         i++;
     }
 };
-let arrNum = [1,2,3,4,5,6,7,8,9];
+loop([1,2,3,4,5,6,7,8,9]);
+
 
 
 
@@ -59,13 +60,15 @@ birds(["Hen","Peacock","Ostrich","Parrot"]);
 
 
 //Write a JavaScript function that takes a string as input and reverses it using a while loop. The function should return the reversed string. function reverseString(str) {
-    function reverse(flower){
-        let reversedflower = "";
-        while (i >=0 ) {
-            reversedflower += flower.length[i]; 
-            i--;
-        }
-        return reversedflower; 
+function reverse(str) {
+    
+    let reversed = "";
+    let i = str.length-1;
+    while(i >= 0 ){
+        reversed += str[i];
+              i--
+       
     }
-
-reverse("Lilies")
+    return reversed;
+}
+console.log(reverse("wonder"));
