@@ -71,12 +71,11 @@ const people = [
       console.log(`Make: ${this.make}, Model: ${this.model}, Year: ${this.year}`);
     },
 
-    age: function (currentyear){
-
-        console.log(`thecurent age is ${2024}-${car.year}`)
-    }
-        
-    
-  };
-  
+    age: function (){
+        let current = new Date().getFullYear();
+        let car = current - this.year;
+        return car;
+}
+};
+    console.log(car.age());
   
