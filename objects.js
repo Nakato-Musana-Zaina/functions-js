@@ -20,20 +20,17 @@ const people = [
     { name: 'Headphones', price: 80, category: 'Electronics' },
     { name: 'Shoes', price: 60, category: 'Clothing' },
   ];
-  function categories(products){
-   let newkeys = products.category
-   let newvalues = products.name
+  //function producter(){
+   let categoryName= Object.groupBy(products, ({category}) => {
+        return category
+      });
+ // }
 
-   Object.keys(products).forEach(item=>
-    console.log({key:category, value:products.name}))
-  }
-
+   
+  console.log(categoryName);
   
 
-
-
-
-
+  
 
   //Given an array of objects, where each object represents a student with a name and an array of scores, write a function that returns a new array containing the names of all students whose average score is greater than or equal to 85. 
   
@@ -43,8 +40,16 @@ const people = [
     { name: 'Jim', scores: [70, 80, 75] },
     { name: 'Jill', scores: [85, 90, 84] },
   ];
-  let objects = products.reduce((obj, item) => ({...obj, [item.name]: [item.scores]}) ,{});
-  console.log(objects)
+  function names(students){
+    return students.filter(student => {
+    
+      let average_score=  student.scores.reduce((first,second) => first + second) / student.scores.length;
+      return average_score >= 85;
+
+    }).map(student=> student.name)
+    
+} 
+    console.log(names(students));
 
 
 
@@ -67,6 +72,7 @@ const people = [
     },
 
     age: function (currentyear){
+
         console.log(`thecurent age is ${2024}-${car.year}`)
     }
         
