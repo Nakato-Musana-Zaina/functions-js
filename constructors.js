@@ -12,10 +12,6 @@
 // ● renterName (string): The name of the person who rented the car. ● rentalStartDate (Date object): The start date of the rental period. ● rentalEndDate (Date object): The end date of the rental period. 
 // The Rental class or function constructor should also have a method called calculateRentalDuration that returns the rental duration in days. 
 // 3) Create an instance of the Car class or function constructor for a car in the inventory. Then, create an instance of the Rental class or function constructor for a rental involving the car you created. Finally, calculate the rental duration using the calculateRentalDuration method.
-c
-
-
-
 
 
 
@@ -25,8 +21,24 @@ c
 // You are building a simple quiz app that contains multiple-choice questions. Your task is to create two JavaScript classes: Question and Quiz. The Question class will represent individual questions, and the Quiz class will manage a collection of questions and the user's progress. 
 // 1. Create a Question class with the following properties: 
 // ● text(string): The text of the question. 
-// ● options(array): An array containing the multiple-choice options. ● correctAnswer(string): The correct answer to the question. 
-// The Question class should also have a method called checkAnswer that takes a user's answer as a parameter and returns true if the answer is correct and false otherwise. 
+// ● options(array): An array containing the multiple-choice options.
+//  ● correctAnswer(string): The correct answer to the question. 
+// The Question class should also have a method called checkAnswer that takes a user's answer as a parameter and returns true if the answer is correct and false otherwise.
+class Question {
+    constructor(text, options, correctAnswer) {
+       Question.text = text;
+       Question.options = options;
+       Question.correctAnswer = correctAnswer;
+    }
+    checkAnswer(user_answer) {
+       if(user_answer === Question.correctAnswer){
+        return true;
+       } else {
+        return false;
+       } ;
+    }
+   } 
+
 // 2. Create a Quiz class with the following properties: 
 // ● questions(array):An array of Question objects. 
 // ● currentQuestionIndex(number): The index of the current question in the questions array. 
@@ -35,3 +47,35 @@ c
 // ● addQuestion: Takes a Question object as a parameter and adds it to the questions array. 
 // ● nextQuestion: Advances to the next question in the quiz by incrementing the currentQuestionIndex. 
 // ● submitAnswer: Takes a user's answer as a parameter, checks if the answer is correct using the checkAnswer method of the Question class, and updates the score if the answer is correct.
+
+   class Quiz {
+    constructor(questions, currentQuestionIndex, score) {
+        Quiz.questions = [];
+        Quiz.currentQuestionIndex = 0;
+        Quiz.score = 0;
+    }
+    addQuestion(question) {
+        Quiz.questions.push(question);
+    }
+    nextQuestion() {
+       if (Quiz.currentQuestionIndex < this.questions.length - 1) {
+        Quiz.currentQuestionIndex++;
+       } else {
+           console.log("You are at the end of the quiz.");
+       }
+    }
+    submitAnswer(answer) {
+       const currentQuestion = Quiz.questions[Quiz.currentQuestionIndex];
+       if (currentQuestion.checkAnswer(answer)) {
+        Quiz.score++;
+           console.log("Correct!");
+       } else {
+           console.log("Incorrect.");
+       }
+       Quiz.nextQuestion();
+    }
+   }
+  
+
+
+
