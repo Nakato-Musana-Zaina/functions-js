@@ -100,9 +100,9 @@ class Question {
            console.log("You are at the end of the quiz.");
        }
     }
-    submitAnswer(answer) {
+    submitAnswer(user_answer) {
        const currentQuestion = Quiz.questions[Quiz.currentQuestionIndex];
-       if (currentQuestion.checkAnswer(answer)) {
+       if (currentQuestion.checkAnswer(user_answer)) {
         Quiz.score++;
            console.log("Correct!");
        } else {
