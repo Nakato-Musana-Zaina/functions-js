@@ -42,10 +42,8 @@ const people = [
   ];
   function names(students){
     return students.filter(student => {
-    
       let average_score=  student.scores.reduce((first,second) => first + second) / student.scores.length;
       return average_score >= 85;
-
     }).map(student=> student.name)
     
 } 
