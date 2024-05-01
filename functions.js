@@ -58,3 +58,18 @@ function arrays(arr) {
     let bal = [1,2,3,4,5,6]
     console.log(bal.slice(0,4))
 
+function sumOfWholeArray(arr, N){
+   let sum=0 , index =0
+
+   while(true){
+      sum+=arr[index++]
+      if(index<N){
+         continue
+      }
+      else{
+         break
+      }
+   }
+   return sum
+}
+console.log(sumOfWholeArray([1,2,5,10,9,3],6))
