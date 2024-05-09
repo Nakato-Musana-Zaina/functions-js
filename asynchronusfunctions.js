@@ -30,30 +30,46 @@ async function inbox(){
 }
 
 //You have an array of user IDs and a function getUserData(id) that returns a Promise with user data when given a user ID. Write an asynchronous function that fetches and logs the data for each user ID one by one, in sequence.
+
+const userId = [1,4,5,7,10,8];
 function getUserData(id){
-const userId = true;
-const register = new Promise((resolve,reject)=>{
-    if(userId){
-        resolve(`Your id is ready`)
-    };
-    else{
-        reject(`id not yet out`)
+async function getUserData(id){
+    const userData= {id}
+    return userData
+}
+}
+
+
+async function findUserData(userId){
+    for (let id of userId){
+        const userData = await getUserData(id);
+        console.log (userData);
     }
-})};
-async function 
+};
+findUserData(userId);
 
 
 
 //You have an asynchronous function performTask() that returns a Promise. The Promise resolves if the task is successful and rejects if there's an error. Write a function that calls performTask() and logs a custom success message if the task is successful, and a custom error message if there's an error.
-function getUserData(id){
-    const userId = true;
-    const register = new Promise((resolve,reject)=>{
-        if(userId){
-            resolve(`Your id is ready`)
-        };
-        else{
-            reject(`id not yet out`)
-        }
+async function performTask(){
+    try{
+        console.log ('Work well done')
+    }
+    catch{
+      console.log ('Try again netx time')
+    }
+}
+async function getPerformTask(){
+    try{
+        await performTask();
+        console.log('we are there');
+    }
+    catch(error){
+        console.log(error)
+        console.log('We shall do better');
+    }
+};
+getPerformTask()
 
 
 
