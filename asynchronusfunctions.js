@@ -95,12 +95,33 @@ getPerformTask()
 //     return new Promise((resolve, reject) => {
 //         const randomValue = Math.random();
 //         if (randomValue > failureProbability) {
-    function getUserData(id){
-        const userId = true;
-        const register = new Promise((resolve,reject)=>{
-            if(userId){
-                resolve(`Your id is ready`)
-            };
-            else{
-                reject(`id not yet out`)
-            }
+    function unstableTask(taskName, failureProbability) {
+        return new Promise((resolve, reject) => {
+        const randomValue = Math.random();
+        if (randomValue > failureProbability) {
+        resolve(`Task "${taskName}" completed successfully`);
+        } else {
+        reject(new Error(`Task "${taskName}" unsucessfull`));
+        }
+        });
+       }
+       const ourpromises = new Promise((resolve, reject)=> {
+        if(randomValue> failureProbability){
+            resolve('task is successful')}
+            reject(`we can try again later`)
+
+
+       })
+       async function executeWithRetry(taskName, retries, failureProbability) {
+        for (let attempts = 2; attempt => retries; attempts++) {
+        try {
+        await unstableTask(taskName, failureProbability);
+        console.log(`Attempt ${attempts}: Task "${taskName}" successful`);
+        return;
+        } catch (error) {
+        console.error(`Attempt ${attempts}: ${error.message}`);
+        }
+        }
+        console.log(`You have ${retries} unsuccessuful for "${taskName}"`);
+       };
+       executeWithRetry('Runtime', 2, 0);
