@@ -18,7 +18,7 @@ class Car {
       this.isAvailable = isAvailable;
     }
   toggleAvailability() {
-    this.isAvailable =false;
+    this.isAvailable =!this.isAvailable;
   }
 }
 const toyota = new Car("Subaru", "forester", 2006, true);
@@ -28,19 +28,20 @@ console.log(toyota.isAvailable);
 // // 2) Create a Rental class or function constructor that has the following properties: ● car (Car object): The car that has been rented. 
 // // ● renterName (string): The name of the person who rented the car. ● rentalStartDate (Date object): The start date of the rental period. ● rentalEndDate (Date object): The end date of the rental period. 
 // // The Rental class or function constructor should also have a method called calculateRentalDuration that returns the rental duration in days. 
-// class Rental {
-//     constructor(car, renterName, rentalStartDate, rentalEndDate) {
-//         Rental.car = car;
-//         Rental.renterName = renterName;
-//         Rental.rentalStartDate = rentalStartDate;
-//         Rental.rentalEndDate = rentalEndDate;
-//     }
-//     calculateRentalDuration() {
-//       const durationInMonths = Rental.rentalEndDate - Rental.rentalStartDate;
-//       const durationInDays = Math.ceil(durationInMonths / (1000 * 60 * 60 * 24));
-//       return durationInDays;
-//     }
-//   }
+class Rental {
+    constructor(car, renterName, rentalStartDate, rentalEndDate) {
+        Rental.car = car;
+        Rental.renterName = renterName;
+        Rental.rentalStartDate = rentalStartDate;
+        Rental.rentalEndDate = rentalEndDate;
+    }
+    calculateRentalDuration() {
+      const durationInMonths = Rental.rentalEndDate - Rental.rentalStartDate;
+      
+      const durationInDays = Math.round(durationInMonths / (1000 * 60 * 60 * 24));
+      return durationInDays;
+    }
+  }
   
 // // 3) Create an instance of the Car class or function constructor for a car in the inventory. Then, create an instance of the Rental class or function constructor for a rental involving the car you created. Finally, calculate the rental duration using the calculateRentalDuration method.
 // const car = new Car("Subaru", "forester", 2016, true);
@@ -60,20 +61,20 @@ console.log(toyota.isAvailable);
 // // ● options(array): An array containing the multiple-choice options.
 // //  ● correctAnswer(string): The correct answer to the question. 
 // // The Question class should also have a method called checkAnswer that takes a user's answer as a parameter and returns true if the answer is correct and false otherwise.
-// class Question {
-//     constructor(text, options, correctAnswer) {
-//        Question.text = text;
-//        Question.options = options;
-//        Question.correctAnswer = correctAnswer;
-//     }
-//     checkAnswer(user_answer) {
-//        if(user_answer === Question.correctAnswer){
-//         return true;
-//        } else {
-//         return false;
-//        } ;
-//     }
-//    } 
+ class Question {
+    constructor(text, options, correctAnswer) {
+       Question.text = text;
+       Question.options = options;
+       Question.correctAnswer = correctAnswer;
+    }
+    checkAnswer(user_answer) {
+       if(user_answer === Question.correctAnswer){
+        return true;
+       } else {
+        return false;
+       } ;
+    }
+   } 
 
 // // 2. Create a Quiz class with the following properties: 
 // // ● questions(array):An array of Question objects. 
@@ -84,35 +85,35 @@ console.log(toyota.isAvailable);
 // // ● nextQuestion: Advances to the next question in the quiz by incrementing the currentQuestionIndex. 
 // // ● submitAnswer: Takes a user's answer as a parameter, checks if the answer is correct using the checkAnswer method of the Question class, and updates the score if the answer is correct.
 
-//    class Quiz {
-//     constructor(questions, currentQuestionIndex, score) {
-//         Quiz.questions = [];
-//         Quiz.currentQuestionIndex = 0;
-//         Quiz.score = 0;
-//     }
-//     addQuestion(question) {
-//         Quiz.questions.push(question);
-//     }
-//     nextQuestion() {
-//        if (Quiz.currentQuestionIndex < this.questions.length - 1) {
-//         Quiz.currentQuestionIndex++;
-//        } else {
-//            console.log("You are done.");
-//        }
-//     }
-//     submitAnswer(user_answer) {
-//        const currentQuestion = Quiz.questions[Quiz.currentQuestionIndex];
-//        if (currentQuestion.checkAnswer(user_answer)) {
-//         Quiz.score++;
-//            console.log("Correct answer");
-//        } else {
-//            console.log("Incorrect answer");
-//        }
-//        Quiz.nextQuestion();
-//     }
-//    }
+   class Quiz {
+    constructor(questions, currentQuestionIndex, score) {
+        Quiz.questions = [];
+        Quiz.currentQuestionIndex = 0;
+        Quiz.score = 0;
+    }
+    addQuestion(question) {
+        Quiz.questions.push(question);
+    }
+    nextQuestion() {
+       if (Quiz.currentQuestionIndex < this.questions.length - 1) {
+        Quiz.currentQuestionIndex++;
+       } else {
+           console.log("You are done.");
+       }
+    }
+    submitAnswer(user_answer) {
+       const currentQuestion = Quiz.questions[Quiz.currentQuestionIndex];
+       if (currentQuestion.checkAnswer(user_answer)) {
+        Quiz.score++;
+           console.log("Correct answer");
+       } else {
+           console.log("Incorrect answer");
+       }
+       Quiz.nextQuestion();
+    }
+   }
    
-//     const myQuiz = new Quiz();
+    const myQuiz = new Quiz();
     
 
 
