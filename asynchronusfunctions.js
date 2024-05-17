@@ -4,7 +4,10 @@ const messages = new Promise((resolve, reject)=>{
     if(time){
         resolve(`How has your day been, would you love lunch?`)
     }
-    reject(`I will give you a call`)
+    else{
+        reject(`I will give you a call`)
+    }
+    
 })
 messages.then((response)=>{
     console.log({response})
@@ -19,7 +22,7 @@ console.log('We are done');
 });
 console.log({messages})
 
-async function inbox(){
+async function inbox(messages, time){
     try{ 
         console.log(`This has to work`)
         await messages
@@ -28,16 +31,28 @@ async function inbox(){
         console.log(`I will text you later `)
     }
 }
+inbox("hello", 2000)
+
+
+// corrections for the number
+
+async function DelayNode(message,delay){
+await new Promise(resolve =>
+    setTimeout(resolve,delay));
+    console.log(message);
+}
+delayedNode('hello, 2000')
+
 
 //You have an array of user IDs and a function getUserData(id) that returns a Promise with user data when given a user ID. Write an asynchronous function that fetches and logs the data for each user ID one by one, in sequence.
 
 const userId = [1,4,5,7,10,8];
-function getUserData(id){
+// function getUserData(id){
 async function getUserData(id){
     const userData= {id}
     return userData
 }
-}
+//}
 
 
 async function findUserData(userId){
@@ -48,6 +63,23 @@ async function findUserData(userId){
 };
 findUserData(userId);
 
+// corrections
+function getUserData(id) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            console.log(`information ${id}`);
+            resolve({ id, name: `User ${id}` });
+        }, 1000);
+    });
+}
+
+async function fetching(userIds) {
+    for (const id of userIds) {
+        const userData = await getUserData(id);
+        console.log(userData);
+    }
+}
+fetching(userIds).then(() => console.log('All user data provided.'));
 
 
 //You have an asynchronous function performTask() that returns a Promise. The Promise resolves if the task is successful and rejects if there's an error. Write a function that calls performTask() and logs a custom success message if the task is successful, and a custom error message if there's an error.
